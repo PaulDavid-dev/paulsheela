@@ -17,13 +17,11 @@ import MusicPlayer from './components/MusicPlayer';
 import EnvelopeIntro from './components/EnvelopeIntro';
 import MainInvitation from './components/MainInvitation';
 import ShareModal from './components/ShareModal';
-import BlessingModal from './components/BlessingModal';
 import { getGoogleCalendarUrl, WEDDING_DETAILS } from './utils/calendarHelper';
 
 export default function App() {
   const [isEnvelopeOpen, setIsEnvelopeOpen] = useState(false);
   const [isShareModalOpen, setIsShareModalOpen] = useState(false);
-  const [isBlessingModalOpen, setIsBlessingModalOpen] = useState(false);
 
   // Live Countdown calculation (Target: 10th October 2026, 10:30 AM IST)
   const targetDate = new Date('2026-10-10T10:30:00+05:30').getTime();
@@ -80,11 +78,7 @@ export default function App() {
         }}
       />
 
-      {/* Blessing & Wishes Quick Modal */}
-      <BlessingModal
-        isOpen={isBlessingModalOpen}
-        onClose={() => setIsBlessingModalOpen(false)}
-      />
+
 
       {/* Main Content */}
       <div className={`w-full flex flex-col items-center transition-opacity duration-700 ${isEnvelopeOpen ? 'opacity-100' : 'opacity-0'}`}>
@@ -190,7 +184,7 @@ export default function App() {
             </div>
 
             {/* Simple & Sweet Action Buttons */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-3.5 border-t border-[#ffb6c1]/50">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-3.5 border-t border-[#ffb6c1]/50">
               
               {/* Google Maps Directions */}
               <a
@@ -214,14 +208,6 @@ export default function App() {
                 <span>Add to Calendar</span>
               </a>
 
-              {/* Send Blessing */}
-              <button
-                onClick={() => setIsBlessingModalOpen(true)}
-                className="btn-pink py-3 px-4 rounded-xl text-xs sm:text-sm font-cinzel font-bold flex items-center justify-center gap-2 shadow-xs cursor-pointer"
-              >
-                <MessageCircleHeart className="w-4 h-4 text-[#183327]" />
-                <span>Send Blessing</span>
-              </button>
 
             </div>
 
