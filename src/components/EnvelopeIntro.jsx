@@ -1,159 +1,261 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Sparkles, Heart, Church } from 'lucide-react';
+import { Sparkles, Heart, Church, MapPin, Calendar, Clock } from 'lucide-react';
 import { musicPlayer } from '../utils/audioHelper';
 
 export default function EnvelopeIntro({ onOpen }) {
   const [isOpening, setIsOpening] = useState(false);
   const [isFlapOpen, setIsFlapOpen] = useState(false);
+  const [isLetterSliding, setIsLetterSliding] = useState(false);
 
   const handleOpenInvitation = () => {
     if (isOpening) return;
     setIsOpening(true);
 
-    // Play golden wedding melody
+    // 1. Play Golden Wedding Melody
     musicPlayer.start();
 
-    // Trigger golden and light pink (#FFB6C1) confetti burst
-    try {
-      confetti({
-        particleCount: 90,
-        spread: 90,
-        origin: { y: 0.52 },
-        colors: ['#FFB6C1', '#D4AF37', '#FFE4E8', '#FFF0F3', '#FFFFFF'],
-        ticks: 220,
-        scalar: 1.2,
-      });
-    } catch (e) {
-      console.log(e);
-    }
-
+    // 2. Open Flap
     setTimeout(() => {
       setIsFlapOpen(true);
-    }, 280);
+    }, 180);
 
+    // 3. Slide Out Invitation Letter Card & Confetti
+    setTimeout(() => {
+      setIsLetterSliding(true);
+      
+      try {
+        confetti({
+          particleCount: 130,
+          spread: 110,
+          origin: { y: 0.48 },
+          colors: ['#FFB6C1', '#D4AF37', '#FFE4E8', '#FFF0F3', '#FFFFFF', '#B8860B', '#E88EA0'],
+          ticks: 260,
+          scalar: 1.25,
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    }, 650);
+
+    // 4. Smooth Transition to Full Invitation
     setTimeout(() => {
       onOpen();
-    }, 1000);
+    }, 1900);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#0d1f18]/95 backdrop-blur-2xl px-4 py-6 overflow-y-auto">
-      {/* Background ambient radial glow with #FFB6C1 touch */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,182,193,0.25)_0%,rgba(212,175,55,0.15)_35%,rgba(13,31,24,0.98)_70%)] pointer-events-none" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-[#fff8fa]/95 backdrop-blur-md px-3 sm:px-4 py-6 overflow-y-auto">
+      {/* Romantic Ambient Radial Background */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,182,193,0.45)_0%,rgba(251,238,168,0.3)_35%,rgba(255,240,243,0.95)_80%)] pointer-events-none" />
 
-      <div className="relative w-full max-w-lg flex flex-col items-center my-auto py-4">
+      <div className="relative w-full max-w-[460px] flex flex-col items-center my-auto py-2 z-10">
         
-        {/* Header Greetings */}
-        <div className="text-center mb-5 z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#1b3d2e]/90 border border-[#ffb6c1]/70 text-[#ffb6c1] text-xs uppercase tracking-[0.2em] font-cinzel mb-2.5 shadow-lg animate-float">
-            <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
+        {/* ========================================================
+            TOP HEADER & SCRIPTURE
+            ======================================================== */}
+        <div className="text-center mb-2 sm:mb-3 w-full">
+          {/* Holy Matrimony Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#183327] border border-[#d4af37] text-[#fbeea8] text-xs uppercase tracking-[0.2em] font-cinzel font-bold shadow-md animate-float">
+            <Sparkles className="w-3.5 h-3.5 text-[#ffd700]" />
             Holy Matrimony
-            <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#ffd700]" />
           </div>
-          <h1 className="text-3xl sm:text-4xl md:text-5xl font-cinzel text-transparent bg-clip-text bg-gradient-to-r from-[#ffd1dc] via-[#ffffff] to-[#ffd1dc] drop-shadow-md tracking-wider font-bold">
-            Paul & Sheela
+
+          {/* Couple Names */}
+          <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-cinzel font-bold tracking-wide text-[#183327] drop-shadow-xs">
+            Paul &amp; Sheela
           </h1>
-          <p className="text-xs sm:text-sm font-playfair italic text-[#d4e5dc] mt-1 tracking-wide">
-            "This is the day the LORD has made: Let us rejoice and be glad in it."
-          </p>
+
+          {/* Scripture Verse */}
+          <div className="mt-2 inline-block px-4 py-1.5 rounded-full bg-white/95 border border-[#d4af37]/60 shadow-xs max-w-sm sm:max-w-md mx-auto">
+            <p className="text-xs sm:text-sm font-playfair italic text-[#183327] font-semibold tracking-wide leading-tight">
+              "This is the day the LORD has made; let us rejoice and be glad in it."
+            </p>
+            <span className="text-[10px] sm:text-xs font-cinzel text-[#8a6015] font-bold block mt-0.5">
+              — Psalm 118:24 —
+            </span>
+          </div>
         </div>
 
-        {/* 3D Envelope Container with Soft Pink Accents */}
-        <div
-          onClick={handleOpenInvitation}
-          className={`group cursor-pointer relative w-full aspect-[1.5/1] max-w-md bg-[#fff8f9] rounded-2xl shadow-[0_25px_60px_rgba(0,0,0,0.6),0_0_30px_rgba(255,182,193,0.3)] border-2 border-[#ffb6c1] p-1.5 transition-all duration-700 select-none ${
-            isOpening ? 'scale-105 opacity-90' : 'hover:scale-[1.02] hover:shadow-[0_30px_70px_rgba(255,182,193,0.5)]'
-          }`}
-        >
-          <div className="relative w-full h-full rounded-xl overflow-hidden bg-gradient-to-br from-[#ffffff] via-[#fff5f7] to-[#ffe4e8] border border-[#ffb6c1]/50 flex flex-col justify-between p-5 sm:p-6">
+        {/* ========================================================
+            CLASSIC ROYAL ENVELOPE WITH INNER LETTER CARD
+            ======================================================== */}
+        <div className="envelope-main-wrapper">
+          
+          <div
+            onClick={handleOpenInvitation}
+            className="envelope-box"
+          >
             
-            {/* Postal Header */}
-            <div className="flex justify-between items-start">
-              <div className="text-left">
-                <span className="text-[10px] sm:text-xs uppercase tracking-[0.2em] font-cinzel text-[#e88ea0] font-bold block">
-                  Holy Wedding Invitation
-                </span>
-                <span className="text-xs font-serif text-[#1e3a2f] font-bold">
-                  M.P Bhavani Mahal
-                </span>
-                <span className="text-[10px] text-[#557567] block">
-                  Thirukattupalli
-                </span>
-              </div>
-
-              {/* Vintage Stamp */}
-              <div className="w-13 h-16 sm:w-14 sm:h-18 rounded border-2 border-dashed border-[#ffb6c1] bg-[#fff0f3] p-1 shadow-sm flex flex-col items-center justify-between rotate-3 group-hover:rotate-0 transition-transform">
-                <Church className="w-5 h-5 text-[#d4af37] mt-1" />
-                <span className="text-[8px] font-cinzel font-bold text-[#1b3d2e]">10 OCT 26</span>
-              </div>
+            {/* 1. ENVELOPE BACK LINER */}
+            <div className="envelope-back-liner">
+              <div 
+                className="absolute inset-0 opacity-30 pointer-events-none"
+                style={{
+                  backgroundImage: `radial-gradient(#d4af37 1px, transparent 1px)`,
+                  backgroundSize: '16px 16px',
+                }}
+              />
             </div>
 
-            {/* Recipient Script */}
-            <div className="text-center my-auto py-1">
-              <span className="text-[11px] font-montserrat uppercase tracking-[0.25em] text-[#996515] font-semibold block mb-0.5">
-                To Our Beloved
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-great-vibes text-[#1b3d2e]">
-                Family & Friends
-              </h2>
-              <div className="w-24 h-[1px] mx-auto mt-1.5 bg-gradient-to-r from-transparent via-[#ffb6c1] to-transparent" />
-            </div>
-
-            {/* Bottom info */}
-            <div className="flex justify-between items-end text-[10px] sm:text-xs text-[#557567] font-montserrat tracking-widest uppercase font-semibold">
-              <span>Saturday, 10th Oct 2026</span>
-              <span>10:30 AM</span>
-            </div>
-
-            {/* Flap fold */}
+            {/* 2. INNER LETTER CARD (Slides Up gracefully out of the pocket) */}
             <div
-              className={`absolute top-0 left-0 right-0 h-1/2 bg-gradient-to-b from-[#fce2e6] to-[#fff5f7] border-b-2 border-[#ffb6c1] origin-top transition-transform duration-700 shadow-sm ${
-                isFlapOpen ? '-rotate-x-180 opacity-0 pointer-events-none' : ''
-              }`}
-              style={{
-                clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-              }}
-            />
-
-            {/* Wax Seal with Gold and #FFB6C1 accents */}
-            <div
-              className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-[#ffd1dc] via-[#c99f36] to-[#734b04] shadow-[0_8px_25px_rgba(0,0,0,0.4),0_0_20px_rgba(255,182,193,0.7)] border-2 border-[#fff0f3] flex items-center justify-center transition-all duration-500 ${
-                isOpening ? 'scale-125 opacity-0' : 'group-hover:scale-110 group-hover:rotate-6'
+              className={`envelope-letter-card ${
+                isLetterSliding ? 'sliding' : ''
               }`}
             >
-              <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border border-dashed border-[#fff0f3]/90 flex flex-col items-center justify-center text-[#241704] font-cinzel text-center">
-                <span className="text-xs sm:text-sm leading-tight font-black tracking-widest text-[#241704]">
-                  P & S
+              {/* Inner Double Borders */}
+              <div className="absolute inset-1 border border-[#d4af37]/50 rounded-lg pointer-events-none" />
+              <div className="absolute inset-2 border border-[#ffb6c1]/60 rounded-md pointer-events-none" />
+
+              {/* Letter Top Header */}
+              <div className="relative z-10 text-center pt-0.5">
+                <span className="text-[9px] uppercase font-cinzel tracking-[0.25em] text-[#8a6015] font-bold block">
+                  Together With Their Families
                 </span>
-                <span className="text-[7px] sm:text-[8px] text-[#3d2c0e] font-sans font-bold mt-0.5">
+                <h2 className="text-sm sm:text-base font-cinzel font-bold text-[#183327] tracking-wider mt-0.5">
+                  G. Paul David &amp; R. Sheela Percy
+                </h2>
+                <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mt-0.5" />
+              </div>
+
+              {/* Letter Center Invitation Script */}
+              <div className="relative z-10 text-center py-0.5">
+                <span className="text-[10px] font-montserrat uppercase tracking-[0.2em] text-[#996515] font-bold block">
+                  Cordially Invite
+                </span>
+                <p className="text-2xl sm:text-3xl font-great-vibes text-[#183327] leading-tight my-0.5">
+                  Family &amp; Friends
+                </p>
+                <span className="text-[9px] font-montserrat text-[#4e6e60] font-medium">
+                  to celebrate their Holy Matrimony
+                </span>
+              </div>
+
+              {/* Letter Bottom Venue & Timing */}
+              <div className="relative z-10 bg-[#fff5f7] rounded-lg p-1.5 border border-[#d4af37]/40 flex items-center justify-between text-[9px] font-montserrat font-bold text-[#183327]">
+                <div className="text-left">
+                  <span className="text-[#8a6015] block font-bold">M.P. Bhavani Mahal</span>
+                  <span className="text-[#557567] text-[8px] font-normal">Thirukattupalli</span>
+                </div>
+                <div className="text-right">
+                  <span className="text-[#183327] block font-bold">Sat, 10 Oct 2026</span>
+                  <span className="text-[#8a6015] text-[8px]">10:30 AM IST</span>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. ENVELOPE FRONT POCKET (Holds the Letter) */}
+            <div className="envelope-front-pocket">
+              {/* Pocket Content (Venue info + Vintage stamp) */}
+              <div className="envelope-pocket-content">
+                
+                {/* Left: Venue summary */}
+                <div className="text-left" style={{ maxWidth: '240px' }}>
+                  <span className="text-[10px] font-cinzel font-bold text-[#8a6015] uppercase tracking-wider block">
+                    Holy Wedding Invitation
+                  </span>
+                  <span className="text-xs sm:text-sm font-serif font-bold text-[#183327] block leading-tight">
+                    M.P. Bhavani Mahal
+                  </span>
+                  <span className="text-[10px] sm:text-xs text-[#527967] font-medium block">
+                    Thirukattupalli, Thanjavur
+                  </span>
+                </div>
+
+                {/* Right: Vintage Scalloped Postage Stamp */}
+                <div 
+                  className="rounded border-2 border-dashed border-[#d4af37] bg-gradient-to-b from-[#fff0f3] to-[#ffe4e8] p-1 shadow-xs flex flex-col items-center justify-between rotate-2"
+                  style={{ width: '56px', height: '70px' }}
+                >
+                  <div className="w-full flex items-center justify-between px-0.5 text-[7px] font-cinzel font-bold text-[#8a6015]">
+                    <span>POST</span>
+                    <span>₹26</span>
+                  </div>
+                  <Church className="w-5 h-5 text-[#996515]" />
+                  <span className="text-[8px] font-cinzel font-black text-[#183327] border-t border-[#d4af37]/40 w-full text-center pt-0.5">
+                    10 OCT 26
+                  </span>
+                </div>
+
+              </div>
+            </div>
+
+            {/* 4. ENVELOPE TOP FLAP (3D Flips 180° Upwards when opened) */}
+            <div
+              className={`envelope-top-flap ${
+                isFlapOpen ? 'open' : ''
+              }`}
+            >
+              <div className="w-full h-full relative flex items-center justify-center">
+                <div 
+                  className="absolute"
+                  style={{ bottom: '6px', width: '80px', height: '1.5px', background: 'rgba(212, 175, 55, 0.7)' }} 
+                />
+              </div>
+            </div>
+
+            {/* 5. 3D ROYAL WAX SEAL MONOGRAM BUTTON */}
+            <div
+              className={`envelope-wax-seal ${
+                isFlapOpen ? 'broken' : ''
+              }`}
+            >
+              <div 
+                className="rounded-full border-2 border-dashed border-[#ffea9f]/80 bg-gradient-to-br from-[#b8860b] to-[#6b4700] flex flex-col items-center justify-center text-center shadow-inner"
+                style={{ width: '50px', height: '50px' }}
+              >
+                <span className="text-xs font-cinzel font-black tracking-widest text-[#fffde6] leading-none drop-shadow-sm">
+                  P &amp; S
+                </span>
+                <span className="text-[7px] font-montserrat font-bold text-[#fbeea8] mt-0.5 tracking-wider">
                   10.10.26
                 </span>
               </div>
             </div>
 
-            {/* Halo glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 w-24 h-24 rounded-full bg-[#ffb6c1]/30 blur-md animate-pulse pointer-events-none" />
+            {/* Golden Glow around Wax Seal */}
+            {!isFlapOpen && (
+              <div 
+                className="absolute rounded-full bg-[#ffd700]/30 blur-md animate-pulse pointer-events-none"
+                style={{
+                  top: '55%',
+                  left: '50%',
+                  transform: 'translate(-50%, -50%)',
+                  width: '90px',
+                  height: '90px',
+                  zIndex: 25,
+                }} 
+              />
+            )}
+
           </div>
+
         </div>
 
-        {/* Tap to open button */}
-        <div className="mt-6 text-center z-10 flex flex-col items-center">
+        {/* ========================================================
+            TOUCH TO OPEN SACRED INVITATION CTA BUTTON
+            ======================================================== */}
+        <div className="mt-4 sm:mt-5 text-center z-10 flex flex-col items-center w-full">
           <button
             onClick={handleOpenInvitation}
             disabled={isOpening}
-            className="btn-pink px-8 py-3.5 rounded-full text-xs sm:text-sm md:text-base font-cinzel font-bold flex items-center gap-2.5 cursor-pointer shadow-lg hover:shadow-xl animate-pulse"
+            className="w-full px-6 py-3.5 rounded-full text-xs sm:text-sm font-cinzel font-bold tracking-wider flex items-center justify-center gap-2 cursor-pointer bg-gradient-to-r from-[#ffb6c1] via-[#ffd1dc] to-[#ffb6c1] text-[#183327] border-2 border-[#d4af37] shadow-[0_8px_25px_rgba(255,182,193,0.6),0_0_20px_rgba(212,175,55,0.3)] hover:shadow-[0_12px_30px_rgba(212,175,55,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+            style={{ maxWidth: '340px' }}
           >
-            <Sparkles className="w-4 h-4 text-[#1a382b]" />
-            {isOpening ? "Opening Sacred Invitation..." : "Touch to Open Sacred Invitation"}
-            <Sparkles className="w-4 h-4 text-[#1a382b]" />
+            <Sparkles className="w-4 h-4 text-[#8a6015] shrink-0" />
+            <span>{isOpening ? "Unfolding Sacred Invitation..." : "Touch to Open Sacred Invitation"}</span>
+            <Sparkles className="w-4 h-4 text-[#8a6015] shrink-0" />
           </button>
           
-          <p className="text-xs text-[#c2d7cc] font-montserrat mt-2.5 tracking-wide flex items-center gap-1.5 opacity-90">
-            <Heart className="w-3 h-3 text-[#ffb6c1] fill-[#ffb6c1]" />
+          {/* Subtext Prompt with Melody Icon */}
+          <p className="text-xs sm:text-sm text-[#183327] font-montserrat font-semibold mt-2.5 tracking-wide flex items-center gap-1.5 bg-white/80 px-3.5 py-1 rounded-full border border-[#ffb6c1]/40 shadow-xs">
+            <Heart className="w-3.5 h-3.5 text-[#e88ea0] fill-[#e88ea0]" />
             Tap to open the holy invitation with melody
           </p>
         </div>
+
       </div>
     </div>
   );

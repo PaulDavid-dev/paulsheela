@@ -6,7 +6,7 @@ export const WEDDING_DETAILS = {
   groomOrigin: "Erode - Nadarmadu",
   bride: "R. Sheela Percy",
   brideParents: "Mr. R. Raju & Mrs. R. Nallammal - (Thabithal)",
-  brideOrigin: "Trichy - Solamaldevi",
+  brideOrigin: "Trichy - Sholamadevi",
   dateFormatted: "Saturday, 10th October 2026",
   timeFormatted: "From 10:30 a.m. onwards",
   dateTimeISO: "2026-10-10T10:30:00+05:30",
@@ -28,11 +28,11 @@ export function getGoogleCalendarUrl() {
     `We warmly solicit your prayers and gracious presence with family and friends.`
   );
   const location = encodeURIComponent("M.P Bhavani Mahal, Thirukattupalli");
-  
+
   // 10:30 AM IST (UTC+5:30) on 10 Oct 2026 = 05:00:00 UTC
   // End at 03:30 PM IST = 10:00:00 UTC
   const dates = "20261010T050000Z/20261010T100000Z";
-  
+
   return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
 }
 
