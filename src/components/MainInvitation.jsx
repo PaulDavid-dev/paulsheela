@@ -218,7 +218,7 @@ export default function MainInvitation({ onOpenMap, onAddToCalendar }) {
                 Mrs. R. Nallammal - <span className="font-normal">(Thabithal)</span>
               </p>
               <p className="text-xs sm:text-sm font-montserrat text-[#4d7061] font-semibold tracking-wider mt-1.5">
-                Trichy - Solamaldevi.
+                Trichy - Sholamadevi.
               </p>
             </div>
           </div>
