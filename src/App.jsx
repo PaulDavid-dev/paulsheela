@@ -85,19 +85,19 @@ export default function App() {
         
         {/* Sweet Top Header Bar */}
         <header className="sticky top-0 z-30 w-full glass-panel border-b border-[#ffb6c1]/60 px-4 sm:px-6 py-2.5">
-          <div className="max-w-[650px] mx-auto flex items-center justify-between">
+          <div className="invitation-container flex items-center justify-between">
             
             {/* Monogram Logo */}
             <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full bg-[#1b3d2e] text-[#ffb6c1] border border-[#ffb6c1] flex items-center justify-center font-cinzel font-bold text-xs shadow-xs">
+              <div className="w-8 h-8 rounded-full bg-[#1b3d2e] text-[#ffb6c1] border border-[#d4af37] flex items-center justify-center font-cinzel font-bold text-xs shadow-xs">
                 P&S
               </div>
               <div className="flex flex-col text-left">
                 <span className="font-cinzel font-bold text-xs sm:text-sm text-[#183327] tracking-wider">
-                  Paul & Sheela
+                  Paul David & Sheela Percy
                 </span>
-                <span className="text-[9px] font-montserrat text-[#e88ea0] font-semibold uppercase tracking-widest">
-                  10th Oct 2026
+                <span className="text-[9px] font-montserrat text-[#b88a24] font-semibold uppercase tracking-widest">
+                  Saturday, 10th Oct 2026
                 </span>
               </div>
             </div>
@@ -129,10 +129,10 @@ export default function App() {
 
         {/* Hero Badge */}
         <div className="text-center pt-5 pb-1 px-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fff0f3] text-[#183327] border border-[#ffb6c1] text-xs uppercase tracking-[0.2em] font-cinzel font-bold shadow-xs">
-            <Sparkles className="w-3.5 h-3.5 text-[#e88ea0]" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#fff0f3] text-[#183327] border border-[#d4af37] text-xs uppercase tracking-[0.2em] font-cinzel font-bold shadow-xs">
+            <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
             Holy Matrimony Invitation
-            <Sparkles className="w-3.5 h-3.5 text-[#e88ea0]" />
+            <Sparkles className="w-3.5 h-3.5 text-[#d4af37]" />
           </div>
         </div>
 
@@ -142,20 +142,20 @@ export default function App() {
         </main>
 
         {/* Action & Countdown Dock */}
-        <div className="w-full max-w-[650px] mx-auto px-3 sm:px-4 mt-2 mb-6">
+        <div className="invitation-container px-3 sm:px-4 mt-2 mb-6">
           <div className="glass-panel rounded-3xl p-5 sm:p-7 border-2 border-[#ffb6c1] shadow-md text-center">
             
             {/* Live Countdown Ticker */}
             <div className="mb-4">
               <div className="flex items-center justify-center gap-2 mb-2.5">
-                <Clock className="w-4 h-4 text-[#e88ea0]" />
+                <Clock className="w-4 h-4 text-[#b88a24]" />
                 <span className="text-xs font-cinzel uppercase tracking-[0.2em] text-[#996515] font-bold">
                   Countdown to Sacred Union
                 </span>
               </div>
 
-              {/* 4 Time Units */}
-              <div className="grid grid-cols-4 gap-2.5 sm:gap-4 max-w-md mx-auto">
+              {/* 4 Time Units in a Single Symmetrical Horizontal Row */}
+              <div className="countdown-grid">
                 <div className="bg-[#fffafb] border-2 border-[#ffb6c1]/70 rounded-2xl p-2.5 sm:p-3 shadow-xs">
                   <span className="text-xl sm:text-3xl font-cinzel font-black text-[#183327] block leading-tight">
                     {String(timeLeft.days).padStart(2, '0')}
@@ -215,7 +215,7 @@ export default function App() {
         </div>
 
         {/* Footer */}
-        <footer className="w-full max-w-[650px] mx-auto px-4 text-center mt-4">
+        <footer className="w-full max-w-[700px] mx-auto px-4 text-center mt-4">
           <div className="flex items-center justify-center gap-2 mb-2">
             <Heart className="w-3.5 h-3.5 text-[#ffb6c1] fill-[#ffb6c1]" />
             <span className="text-xs sm:text-sm font-cinzel text-[#8f6412] font-bold">

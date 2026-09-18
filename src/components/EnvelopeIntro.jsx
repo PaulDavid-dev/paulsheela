@@ -63,8 +63,8 @@ export default function EnvelopeIntro({ onOpen }) {
           </div>
 
           {/* Couple Names */}
-          <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-cinzel font-bold tracking-wide text-[#183327] drop-shadow-xs">
-            Paul &amp; Sheela
+          <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-cinzel font-black tracking-wide text-[#183327] drop-shadow-xs">
+            Paul David <span className="text-[#b88a24] font-great-vibes text-4xl sm:text-5xl md:text-6xl font-normal">&amp;</span> Sheela Percy
           </h1>
 
           {/* Scripture Verse */}
@@ -114,7 +114,7 @@ export default function EnvelopeIntro({ onOpen }) {
                 <span className="text-[9px] uppercase font-cinzel tracking-[0.25em] text-[#8a6015] font-bold block">
                   Together With Their Families
                 </span>
-                <h2 className="text-sm sm:text-base font-cinzel font-bold text-[#183327] tracking-wider mt-0.5">
+                <h2 className="text-sm sm:text-base font-cinzel font-bold text-[#183327] tracking-wider mt-0.5 gold-foil-shimmer">
                   G. Paul David &amp; R. Sheela Percy
                 </h2>
                 <div className="w-16 h-[1px] bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mt-0.5" />

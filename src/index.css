@@ -211,6 +211,31 @@ body {
 .flex { display: flex; }
 .inline-flex { display: inline-flex; }
 .grid { display: grid; }
+.grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+.grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-cols-\[1fr\,auto\,1fr\] { grid-template-columns: 1fr auto 1fr; }
+
+.gap-1 { gap: 0.25rem; }
+.gap-1\.5 { gap: 0.375rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-2\.5 { gap: 0.625rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-3\.5 { gap: 0.875rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.gap-6 { gap: 1.5rem; }
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sm\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .sm\:grid-cols-\[1fr\,auto\,1fr\] { grid-template-columns: 1fr auto 1fr; }
+  .sm\:gap-3 { gap: 0.75rem; }
+  .sm\:gap-4 { gap: 1rem; }
+  .sm\:gap-6 { gap: 1.5rem; }
+}
+
 .hidden { display: none; }
 .block { display: block; }
 .inline { display: inline; }
@@ -877,4 +902,253 @@ body {
   transform: translate(-50%, -50%) scale(1.3);
   opacity: 0;
   pointer-events: none;
+}
+
+/* =========================================================================
+   ROYAL CLASSIC INVITATION ANIMATIONS & LUXURY CARD STYLING
+   ========================================================================= */
+
+@keyframes shimmerGold {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.gold-foil-shimmer {
+  background: linear-gradient(
+    90deg,
+    #0d2119 0%,
+    #183a2c 18%,
+    #7a5209 32%,
+    #b88a24 44%,
+    #f3d069 50%,
+    #b88a24 56%,
+    #7a5209 68%,
+    #183a2c 82%,
+    #0d2119 100%
+  );
+  background-size: 280% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerGold 7s ease-in-out infinite;
+  display: inline-block;
+  font-weight: 900;
+}
+
+/* Divider utilities */
+.divide-y > * + * {
+  border-top: 1px solid rgba(255, 182, 193, 0.6);
+}
+
+.divide-x > * + * {
+  border-left: 1px solid rgba(255, 182, 193, 0.6);
+}
+
+@media (min-width: 640px) {
+  .sm\:divide-y-0 > * + * {
+    border-top: none;
+  }
+  .sm\:divide-x > * + * {
+    border-left: 1px solid rgba(255, 182, 193, 0.6);
+  }
+  .sm\:divide-x-0 > * + * {
+    border-left: none;
+  }
+  .sm\:border-0 {
+    border: none;
+  }
+  .sm\:p-0 {
+    padding: 0;
+  }
+  .sm\:shadow-none {
+    box-shadow: none;
+  }
+  .sm\:bg-transparent {
+    background-color: transparent;
+  }
+}
+
+.gold-badge-shimmer {
+  background: linear-gradient(
+    90deg,
+    #8f6215 0%,
+    #c4992c 25%,
+    #ffe999 50%,
+    #c4992c 75%,
+    #8f6215 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerGold 5s ease-in-out infinite;
+}
+
+@keyframes royalPulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.25), 0 0 30px rgba(255, 182, 193, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 28px rgba(212, 175, 55, 0.45), 0 0 50px rgba(255, 182, 193, 0.6);
+  }
+}
+
+.royal-glow-border {
+  animation: royalPulseGlow 4s ease-in-out infinite;
+}
+
+/* Ornate Victorian / Classical Border Corner accents */
+.royal-corner-tl {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 44px;
+  height: 44px;
+  border-top: 2px solid #d4af37;
+  border-left: 2px solid #d4af37;
+  border-top-left-radius: 8px;
+  pointer-events: none;
+}
+
+.royal-corner-tr {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  border-top: 2px solid #d4af37;
+  border-right: 2px solid #d4af37;
+  border-top-right-radius: 8px;
+  pointer-events: none;
+}
+
+.royal-corner-bl {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 44px;
+  height: 44px;
+  border-bottom: 2px solid #d4af37;
+  border-left: 2px solid #d4af37;
+  border-bottom-left-radius: 8px;
+  pointer-events: none;
+}
+
+.royal-corner-br {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  border-bottom: 2px solid #d4af37;
+  border-right: 2px solid #d4af37;
+  border-bottom-right-radius: 8px;
+  pointer-events: none;
+}
+
+/* Floating Shower Petals Animation */
+@keyframes petalRise {
+  0% {
+    transform: translateY(0) scale(0.6) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(-220px) scale(1.15) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-petal-rise {
+  animation: petalRise 2.5s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
+}
+
+/* Responsive typography utilities */
+.couple-name-responsive {
+  font-size: clamp(1.85rem, 6.2vw, 2.85rem);
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+}
+
+.script-with-responsive {
+  font-size: clamp(2.3rem, 7vw, 3.6rem);
+  line-height: 1;
+}
+
+.parents-name-responsive {
+  font-size: clamp(0.95rem, 3vw, 1.15rem);
+  line-height: 1.4;
+}
+
+/* Symmetrical & Device-Aligned Layout Containers */
+.invitation-container {
+  width: 100%;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.max-w-\[650px\],
+.max-w-\[680px\],
+.max-w-\[700px\],
+.max-w-\[720px\] {
+  max-width: 680px !important;
+}
+
+/* Symmetrical Parents Grid */
+.parents-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .parents-grid {
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.25rem;
+  }
+}
+
+/* Date & Venue Symmetrical Frame */
+.event-details-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .event-details-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* 4-Unit Live Countdown Horizontal Row */
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .countdown-grid {
+    gap: 1rem;
+  }
 }
