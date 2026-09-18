@@ -93,8 +93,12 @@ export default function App() {
                 P&S
               </div>
               <div className="flex flex-col text-left">
-                <span className="font-cinzel font-bold text-xs sm:text-sm text-[#183327] tracking-wider">
-                  Paul David & Sheela Percy
+                <span className="font-cinzel font-bold text-xs sm:text-sm text-[#183327] tracking-wider flex items-center gap-1">
+                  <span>Paul</span>
+                  <span className="text-[#b88a24] font-playfair italic font-semibold lowercase text-[10px] sm:text-xs">
+                    (weds)
+                  </span>
+                  <span>Sheela</span>
                 </span>
                 <span className="text-[9px] font-montserrat text-[#b88a24] font-semibold uppercase tracking-widest">
                   Saturday, 10th Oct 2026

@@ -63,8 +63,12 @@ export default function EnvelopeIntro({ onOpen }) {
           </div>
 
           {/* Couple Names */}
-          <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-cinzel font-black tracking-wide text-[#183327] drop-shadow-xs">
-            Paul David <span className="text-[#b88a24] font-great-vibes text-4xl sm:text-5xl md:text-6xl font-normal">&amp;</span> Sheela Percy
+          <h1 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-cinzel font-black tracking-wide text-[#183327] drop-shadow-xs flex items-center justify-center gap-2 sm:gap-3">
+            <span>Paul</span>
+            <span className="text-[#b88a24] font-playfair italic text-2xl sm:text-3xl md:text-4xl font-semibold lowercase tracking-normal px-1">
+              (weds)
+            </span>
+            <span>Sheela</span>
           </h1>
 
           {/* Scripture Verse */}
