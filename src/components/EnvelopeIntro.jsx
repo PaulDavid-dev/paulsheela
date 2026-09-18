@@ -23,7 +23,7 @@ export default function EnvelopeIntro({ onOpen }) {
     // 3. Slide Out Invitation Letter Card & Confetti
     setTimeout(() => {
       setIsLetterSliding(true);
-      
+
       try {
         confetti({
           particleCount: 130,
@@ -50,7 +50,7 @@ export default function EnvelopeIntro({ onOpen }) {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,182,193,0.45)_0%,rgba(251,238,168,0.3)_35%,rgba(255,240,243,0.95)_80%)] pointer-events-none" />
 
       <div className="relative w-full max-w-[460px] flex flex-col items-center my-auto py-2 z-10">
-        
+
         {/* ========================================================
             TOP HEADER & SCRIPTURE
             ======================================================== */}
@@ -86,15 +86,15 @@ export default function EnvelopeIntro({ onOpen }) {
             CLASSIC ROYAL ENVELOPE WITH INNER LETTER CARD
             ======================================================== */}
         <div className="envelope-main-wrapper">
-          
+
           <div
             onClick={handleOpenInvitation}
             className="envelope-box"
           >
-            
+
             {/* 1. ENVELOPE BACK LINER */}
             <div className="envelope-back-liner">
-              <div 
+              <div
                 className="absolute inset-0 opacity-30 pointer-events-none"
                 style={{
                   backgroundImage: `radial-gradient(#d4af37 1px, transparent 1px)`,
@@ -105,9 +105,8 @@ export default function EnvelopeIntro({ onOpen }) {
 
             {/* 2. INNER LETTER CARD (Slides Up gracefully out of the pocket) */}
             <div
-              className={`envelope-letter-card ${
-                isLetterSliding ? 'sliding' : ''
-              }`}
+              className={`envelope-letter-card ${isLetterSliding ? 'sliding' : ''
+                }`}
             >
               {/* Inner Double Borders */}
               <div className="absolute inset-1 border border-[#d4af37]/50 rounded-lg pointer-events-none" />
@@ -154,7 +153,7 @@ export default function EnvelopeIntro({ onOpen }) {
             <div className="envelope-front-pocket">
               {/* Pocket Content (Venue info + Vintage stamp) */}
               <div className="envelope-pocket-content">
-                
+
                 {/* Left: Venue summary */}
                 <div className="text-left" style={{ maxWidth: '240px' }}>
                   <span className="text-[10px] font-cinzel font-bold text-[#8a6015] uppercase tracking-wider block">
@@ -169,13 +168,13 @@ export default function EnvelopeIntro({ onOpen }) {
                 </div>
 
                 {/* Right: Vintage Scalloped Postage Stamp */}
-                <div 
+                <div
                   className="rounded border-2 border-dashed border-[#d4af37] bg-gradient-to-b from-[#fff0f3] to-[#ffe4e8] p-1 shadow-xs flex flex-col items-center justify-between rotate-2"
                   style={{ width: '56px', height: '70px' }}
                 >
                   <div className="w-full flex items-center justify-between px-0.5 text-[7px] font-cinzel font-bold text-[#8a6015]">
                     <span>POST</span>
-                    <span>₹26</span>
+                    <span></span>
                   </div>
                   <Church className="w-5 h-5 text-[#996515]" />
                   <span className="text-[8px] font-cinzel font-black text-[#183327] border-t border-[#d4af37]/40 w-full text-center pt-0.5">
@@ -188,25 +187,23 @@ export default function EnvelopeIntro({ onOpen }) {
 
             {/* 4. ENVELOPE TOP FLAP (3D Flips 180° Upwards when opened) */}
             <div
-              className={`envelope-top-flap ${
-                isFlapOpen ? 'open' : ''
-              }`}
+              className={`envelope-top-flap ${isFlapOpen ? 'open' : ''
+                }`}
             >
               <div className="w-full h-full relative flex items-center justify-center">
-                <div 
+                <div
                   className="absolute"
-                  style={{ bottom: '6px', width: '80px', height: '1.5px', background: 'rgba(212, 175, 55, 0.7)' }} 
+                  style={{ bottom: '6px', width: '80px', height: '1.5px', background: 'rgba(212, 175, 55, 0.7)' }}
                 />
               </div>
             </div>
 
             {/* 5. 3D ROYAL WAX SEAL MONOGRAM BUTTON */}
             <div
-              className={`envelope-wax-seal ${
-                isFlapOpen ? 'broken' : ''
-              }`}
+              className={`envelope-wax-seal ${isFlapOpen ? 'broken' : ''
+                }`}
             >
-              <div 
+              <div
                 className="rounded-full border-2 border-dashed border-[#ffea9f]/80 bg-gradient-to-br from-[#b8860b] to-[#6b4700] flex flex-col items-center justify-center text-center shadow-inner"
                 style={{ width: '50px', height: '50px' }}
               >
@@ -221,7 +218,7 @@ export default function EnvelopeIntro({ onOpen }) {
 
             {/* Golden Glow around Wax Seal */}
             {!isFlapOpen && (
-              <div 
+              <div
                 className="absolute rounded-full bg-[#ffd700]/30 blur-md animate-pulse pointer-events-none"
                 style={{
                   top: '55%',
@@ -230,7 +227,7 @@ export default function EnvelopeIntro({ onOpen }) {
                   width: '90px',
                   height: '90px',
                   zIndex: 25,
-                }} 
+                }}
               />
             )}
 
@@ -252,7 +249,7 @@ export default function EnvelopeIntro({ onOpen }) {
             <span>{isOpening ? "Unfolding Sacred Invitation..." : "Touch to Open Sacred Invitation"}</span>
             <Sparkles className="w-4 h-4 text-[#8a6015] shrink-0" />
           </button>
-          
+
           {/* Subtext Prompt with Melody Icon */}
           <p className="text-xs sm:text-sm text-[#183327] font-montserrat font-semibold mt-2.5 tracking-wide flex items-center gap-1.5 bg-white/80 px-3.5 py-1 rounded-full border border-[#ffb6c1]/40 shadow-xs">
             <Heart className="w-3.5 h-3.5 text-[#e88ea0] fill-[#e88ea0]" />
